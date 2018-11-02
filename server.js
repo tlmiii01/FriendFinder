@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Bring in the routes that I need
 require("./app/routing/htmlRoutes.js")(app);
-// require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/apiRoutes.js")(app);
 
 // Start listening...
 app.listen(PORT, function() {
