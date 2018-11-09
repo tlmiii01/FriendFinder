@@ -7,9 +7,8 @@ module.exports = function (app) {
     });
 
     // Post route to add a new friend
-    app.post("/api/friends", function(req, res) {
+    app.post("/api/friends", function (req, res) {
         friends.push(req.body);
-        res.redirect('/');
-    })
-
+        // res.redirect('/');
+    });
 }

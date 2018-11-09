@@ -1,23 +1,177 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="jumbotron">
             <h1>Friend Finder - Survey</h1>
         </div>
-        
+        <form action="">
+            <div class="form-group">
+                <label for="nameInput">User Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Ex. John Doe">
+            </div>
+            <div class="form-group">
+                <label for="photoInput">Photo URL</label>
+                <input type="text" class="form-control" id="photoInput" placeholder="http://Your/photo/url">
+            </div>
+            <div class="form-group">
+                <label for="question1">I like Monty Python!</label>
+                <select class="form-control" id="question1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question2">Love to go out to restaurants...</label>
+                <select class="form-control" id="question2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question3">I really like classical music.</label>
+                <select class="form-control" id="question3">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question4">I love to play video games.</label>
+                <select class="form-control" id="question4">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question5">I love having wine with dinner.</label>
+                <select class="form-control" id="question5">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question6">I love warching college football.</label>
+                <select class="form-control" id="question6">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question7">NBA basketball is far superior to college ball.</label>
+                <select class="form-control" id="question7">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question8">Movies are best watched at home instead of movie
+                    theaters.</label>
+                <select class="form-control" id="question8">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question9">Star Trek is far superior to Star Wars.</label>
+                <select class="form-control" id="question9">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question10">J.R.R. Tolkien is the greatest author, ever.</label>
+                <select class="form-control" id="question10">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+        </form>
     </div>
-    
-    
+
+    <script>
+        var newFriend;
+        $('#submitButton').on("click", function (event) {
+            event.preventDefault();
+
+            // Build an object of data
+            newFriend = {
+                name: $(nameInput).val().trim(),
+                photo: $(photoInput).val().trim()
+            };
+
+            // Cycle through all of the selects and add to scores array
+            let scores = [];
+            scores.push($("#question1").val());
+            scores.push($("#question2").val());
+            scores.push($("#question3").val());
+            scores.push($("#question4").val());
+            scores.push($("#question5").val());
+            scores.push($("#question6").val());
+            scores.push($("#question7").val());
+            scores.push($("#question8").val());
+            scores.push($("#question9").val());
+            scores.push($("#question10").val());
+            newFriend.scores = scores;
+
+            console.log(newFriend);
+            for (let i = 0; i < newFriend.scores.length; ++i) {
+                console.log(newFriend.scores[i]);
+            }
+
+            // Send the data to my server
+            $.post("/api/friends", newFriend, function (data) {
+                console.log("Got Here!");
+                console.log(data);
+            });
+
+        });
+
+    </script>
+
 </body>
+
 </html>
