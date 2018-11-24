@@ -157,15 +157,23 @@
             scores.push($("#question10").val());
             newFriend.scores = scores;
 
-            console.log(newFriend);
-            for (let i = 0; i < newFriend.scores.length; ++i) {
-                console.log(newFriend.scores[i]);
-            }
+            // console.log(newFriend);
+            // for (let i = 0; i < newFriend.scores.length; ++i) {
+            //     console.log(newFriend.scores[i]);
+            // }
 
             // Send the data to my server
-            $.post("/api/friends", newFriend, function (data) {
-                console.log("Got Here!");
-                console.log(data);
+            // $.post("/api/friends", newFriend, function (data, status) {
+            //     // console.log("Got Here!");
+            //     console.log(data);
+            // });
+
+            $.ajax({
+                url: "/api/friends/",
+                type: "POST",
+                data: newFriend
+            }).then(function(response) {
+                console.log("success");
             });
 
         });

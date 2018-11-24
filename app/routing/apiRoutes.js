@@ -1,4 +1,5 @@
 var friends = require("../data/friends");
+var findBestMatch = require("../utilities/utility");
 
 module.exports = function (app) {
     // Route to display all friends
@@ -8,7 +9,10 @@ module.exports = function (app) {
 
     // Post route to add a new friend
     app.post("/api/friends", function (req, res) {
+        var bestMatch = findBestMatch(friends, req.body);
+        console.log("Added data")
         friends.push(req.body);
-        // res.redirect('/');
+        console.log(bestMatch);
+        res.json(bestMatch);
     });
 }
