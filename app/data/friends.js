@@ -1,7 +1,7 @@
 var friends = [
     {
         name: "Joe Cool",
-        photo: "http://path/to/photo.jpg",
+        photo: "https://www.maquoketa.lib.ia.us/images/misc-pics/joe%20cool%20snoopy.bmp/image_preview",
         scores: [
             5,
             2,
