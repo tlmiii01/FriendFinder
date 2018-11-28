@@ -9,11 +9,8 @@ module.exports = function (app) {
 
     // Post route to add a new friend
     app.post("/api/friends", function (req, res) {
-        console.log("gothere");
         var bestMatch = findBestMatch(friends, req.body);
-        console.log("Added data")
         friends.push(req.body);
-        console.log(bestMatch);
         res.json(bestMatch);
     });
 }

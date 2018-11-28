@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Friend Finder Survey</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CDN -->
@@ -16,7 +16,9 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>Friend Finder - Survey</h1>
+            <div class="text-center">
+                <h1 class="display-3">Friend Finder - Survey</h1>
+            </div>
         </div>
         <form action="">
             <div class="form-group">
@@ -128,7 +130,10 @@
                     <option>5</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+            <div class="my-4">
+                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+
+            </div>
         </form>
 
         <!-- Modal -->
@@ -166,7 +171,6 @@
         var newFriend;
         $('#submitButton').on("click", function (event) {
             event.preventDefault();
-            console.log("got here");
             // Build an object of data
             newFriend = {
                 name: $(nameInput).val().trim(),
@@ -187,13 +191,11 @@
             scores.push($("#question10").val());
             newFriend.scores = scores;
 
-            console.log(newFriend);
             $.ajax({
                 url: "/api/friends/",
                 type: "POST",
                 data: newFriend
             }).then(function (response) {
-                console.log(response);
                 $("#matchPhoto").attr("src", response.photo);
                 $("#matchName").text(response.name); 
                 $("#exampleModal").modal('show');
